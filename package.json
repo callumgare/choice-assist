@@ -1,8 +1,9 @@
 {
   "name": "choice-assist",
-  "version": "1.0.0",
-  "description": "A site for building interactive choose your own adventures",
+  "version": "1.0.1",
+  "description": "A web app for making deck-builing style interactive choose your own adventures",
   "author": "Callum Gare <callum@gare.com.au>",
+  "repository": "github:callumgare/choice-assist",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",

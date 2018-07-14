@@ -38,7 +38,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     before: function(app) {
       // if run in glitch.com then get assets from CDN
-      if (!fs.existsSync('.glitch-assets')) return
+      if (!envIsGlitch || !fs.existsSync('.glitch-assets')) return
       app.use("/assets", glitchAssets())
     },
     public: envIsGlitch 
