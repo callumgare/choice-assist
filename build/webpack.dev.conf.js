@@ -2,17 +2,19 @@
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
+const glitchAssets = () => require('./glitch-assets')
 const merge = require('webpack-merge')
 const path = require('path')
+const fs = require('fs')
 const baseWebpackConfig = require('./webpack.base.conf')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const deckData = require('../src/deckData.json')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
-const deckData = require('../src/deckData.json')
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
@@ -32,6 +34,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       ],
     },
     hot: true,
+    before: function(app) {
+      // if run in glitch.com then get assets from CDN
+      if (!fs.existsSync('.glitch-assets')) return
+      app.use("/assets", glitchAssets())
+    },
     disableHostCheck: config.dev.disableHostCheck,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
