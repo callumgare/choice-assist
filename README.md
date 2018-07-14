@@ -1,10 +1,27 @@
 # Choice Assist
-
 Hia! This little app allows you to easily make your own choose your own adventure in the form of a deck builder which other people can fill out and share their results. It will keep track of how much points/money/etc that you have remaining or how much you're over budget.
 
-I built this because I got sick of doing this all in my head or writing it down on paper.
+I built choice-assist because I got sick of doing this all in my head or writing it down on paper.
 
-## Build Setup
+## Demo
+["Get A Life" running on glitch.com](https://choice-assist.glitch.me/)
+
+## Getting Started
+I recommend using a nifty service called glitch.com. Glitch does all the dirty work of getting your web app up and running. Plus it's got a lovely community :)
+
+[To get started go to the choice-assist glitch project.](https://glitch.com/edit/#!/choice-assist)
+
+## Using Glitch
+If you're reading this on glitch.com you should hopefully see a button called `🕶 Show` in the top left corner ↖. Hitting it will take you to the site you've made. Before you get started making your own adventure first create a glitch account (or sign in). This is important because if you're not logged in then any new glitches you create will be considered anonymous and [will be **deleted after 5 days**](https://glitch.com/faq#restrictions). If you don't own the current glitch you're viewing then you should see a button labeled `Remix This 🎤` in the top right corner ↗. When you remix an glitch you take a copy of a glitch project. Since you own that copy so you can modify it to your hearts content.
+
+## Editing
+All the content of an adventure is stored in a file called _deckData.json_ in the _src/_ folder. However to make things easier choice-assist has a visual editor which you can access at //\<domain\>/editor. For example if you've remixed choice-assist on glitch.com and your glitch project name is "pirate-cyoa" the address you would go to edit your adventure would be https://pirate-cyoa.glitch.me/editor. Any images you want to use should be uploaded to the _assets/_ folder. 
+
+## Customising The Look
+If you know a bit of CSS you can easily customise your adventure to look however you like. choice-assist uses the Vue.js framework which splits differnt parts of the page up into "components". Components are stored as _.vue_ files in _src/components/_ and _src/pages/_. The CSS behind each component can be found be at the bottom of each component file in the `<style>` section.
+
+## Advanced Setup
+You don't have to use glitch.com though, you can run it on whatever you want.
 
 ``` bash
 # install dependencies
@@ -28,5 +45,3 @@ npm run e2e
 # run all tests
 npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
