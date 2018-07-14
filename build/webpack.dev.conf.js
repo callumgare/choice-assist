@@ -13,6 +13,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const deckData = require('../src/deckData.json')
 
+const envIsGlitch = !!process.env.PROJECT_NAME
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -39,7 +41,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       if (!fs.existsSync('.glitch-assets')) return
       app.use("/assets", glitchAssets())
     },
-    disableHostCheck: config.dev.disableHostCheck,
+    public: envIsGlitch 
+      ? process.env.PROJECT_NAME + '.glitch.me'
+      : undefined, // if run in glitch.com then set public
+    disableHostCheck: envIsGlitch
+      ? true
+      : config.dev.disableHostCheck, // since glitch.com runs app behind proxy
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || config.dev.host,

@@ -52,7 +52,8 @@
   }
   .title {
     margin: 0;
-    word-break: break-all;
+    //word-break: break-all;
+    text-align: center;
   }
   .selected {
     outline: 1em solid #efdd0d;
