@@ -1,5 +1,5 @@
 # Choice Assist
-Hia! This little app allows you to easily make your own choose your own adventure in the form of a deck builder which other people can fill out and share their results. It will keep track of how much points/money/etc that you have remaining or how much you're over budget.
+Hia! This little app allows you to easily make your own interactive choose your own adventure in the form of a deck builder. When making your selection it will keep track of how much points/money/etc you have remaining and let you know when you're over budget. Once you're done it'll give you a sharable link to a page showing which choices you made.
 
 I built choice-assist because I got sick of doing this all in my head or writing it down on paper.
 
