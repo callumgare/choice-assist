@@ -1,0 +1,50 @@
+#page {
+  margin-bottom: 8em;
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#page.flatView {
+  margin: 1em;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #d6e3ea;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  flex-wrap: wrap;
+  padding: 0.5em;
+  justify-content: space-between;
+}
+footer div > * {
+  margin: 0.5em;
+  padding-top: 0.2em;
+}
+footer div > span {
+  display: inline-block;
+}
+@media (max-width: 40em) {
+  footer {
+    justify-content: center;
+  }
+}
+footer.overBudget .remaining {
+  color: #a01111;
+}
+
+.selected.flat.selectable {
+  position: relative;
+}
+.selected.flat.selectable::before {
+  color: #decd55;
+  content: "\2022";
+  position: absolute;
+  left: -0.7em;
+  font-size: 3em;
+  line-height: 0.6em;
+}

@@ -1,0 +1,23 @@
+button {
+  background-color: #99d8ff;
+  color: #2c3e4f;
+  font-weight: bold;
+  font-size: 1.2em;
+  //margin: 0;
+  padding-bottom: 0.2em;
+  //margin-left: auto;
+}
+button:focus {
+  outline: none;
+  /*box-shadow: 0 0 3pt 2pt #ffffff;*/
+}
+button.danger {
+  background-color: #ff8080;
+}
+button.success {
+  background-color: #9adea6;
+}
+button.disabled, button:disabled {
+  color: #848484;
+  background-color: #d4d4d4;
+}
