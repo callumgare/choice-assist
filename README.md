@@ -1,7 +1,7 @@
 # Choice Assist
-Hia! This little app allows you to easily make your own interactive choose your own adventure in the form of a deck builder. When making your selection it will keep track of how much points/money/etc you have remaining and let you know when you're over budget. Once you're done it'll give you a sharable link to a page showing which choices you made.
+Hia! This little app allows you to easily make your own interactive deck-builder style Choose Your Own Adventures. As you make your choices it will keep track of how much points/money/etc you have remaining and let you know when you're over budget. Once you're done it'll give you a sharable link to a page showing which choices you made.
 
-I built choice-assist because I got sick of doing this all in my head or writing it down on paper.
+I built choice-assist because normally these type of CYOAs are [distributed as static images](https://www.reddit.com/r/makeyourchoice/) and I got sick of manually recording what I've chosen.
 
 ## Demo
 ["Get A Life" running on glitch.com](https://choice-assist.glitch.me/)
