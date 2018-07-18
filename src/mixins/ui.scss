@@ -3,13 +3,11 @@ button {
   color: #2c3e4f;
   font-weight: bold;
   font-size: 1.2em;
-  //margin: 0;
+  border: 0;
   padding-bottom: 0.2em;
-  //margin-left: auto;
 }
 button:focus {
   outline: none;
-  /*box-shadow: 0 0 3pt 2pt #ffffff;*/
 }
 button.danger {
   background-color: #ff8080;

@@ -74,7 +74,8 @@
       addChoice () {
         this.groupData.contains.push({
           title: 'New Choice',
-          id: this.getNextID()
+          id: this.getNextID(),
+          maxSelectable: 1
         })
       },
       deleteItem (item) {

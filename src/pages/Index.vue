@@ -5,14 +5,14 @@
       :groupData="deckData"
       :selectable="true"
       :level="1"
-      @choiceSelectionToggled="toggleChoiceSelection"
+      @selectionChanged="setSelection"
     />
     <view-deck-card-group
       v-else
       :groupData="deckData"
       :level="1"
       :selectable="true"
-      @choiceSelectionToggled="toggleChoiceSelection"
+      @selectionChanged="setSelection"
     />
     <footer :class="{overBudget: remaining < 0}">
       <div>

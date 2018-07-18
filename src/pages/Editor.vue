@@ -4,7 +4,6 @@
       v-if="view === 'content'"
       :groupData="deckData"
       :level="1"
-      @choiceClicked="toggleChoiceSelection"
     />
     <template v-else-if="view === 'structure'">
       <p>
@@ -13,7 +12,6 @@
       <edit-deck-flat
         :groupData="deckData"
         :level="1"
-        @choiceClicked="toggleChoiceSelection"
       />
     </template>
     <textarea 

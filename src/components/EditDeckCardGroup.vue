@@ -49,12 +49,10 @@
           v-if="child.contains"
           :groupData="child"
           :level="level+1"
-          @choiceClicked="toggleChoiceSelection"
         />
         <edit-deck-card-choice 
           v-else
           :choiceData="child"
-          @choiceClicked="toggleChoiceSelection"
         />
       </li>
     </ul>

@@ -21,15 +21,33 @@
           :groupData="child"
           :hideNotSelected="hideNotSelected"
           :selectable="selectable"
-          @choiceSelectionToggled="toggleChoiceSelection"
+          @selectionChanged="setSelection"
         />
-        <header v-else @click="selectable && toggleChoiceSelection(child)">
+        <header v-else @click="clicked(child)">
           <h1>
             {{child.title}}
           </h1>
           <span :class="['price', {cost: child.cost > 0, gain: child.cost < 0, neutral: !child.cost || child.cost === 0}]">
             {{ isNaN(child.cost) || child.cost === 0 ? 'No Cost' : Math.abs(child.cost)+' Points' }}
           </span>
+          <div class="qty" v-if="isSelected(child) && (child.maxSelectable > 1 || child.maxSelectable === undefined)">
+            <span v-if="child.maxSelectable > 0" class="maxSelectable">Max: {{child.maxSelectable}}</span><!--
+            --><span class="qty">QTY: {{ getQty(child) }}</span>
+            <span class="qtyButtons" v-if="selectable" @click.stop>
+              <span 
+                @click="setQty(child, getQty(child) + 1)" 
+                :class="{disabled: getQty(child) >= child.maxSelectable}"
+              >
+                ➕
+              </span>
+              <span 
+                @click="setQty(child, getQty(child) - 1)" 
+                :class="{disabled: getQty(child) <= 1}"
+              >
+                ➖
+              </span>
+            </span>
+          </div>
         </header>
       </li>
     </ul>
@@ -55,8 +73,28 @@
           if (child.contains && this.subtreeSelected(child).length > 0) return true
         })
       }
+    },
+    methods: {
+      clicked (choice) {
+        if (!this.selectable) return
+        if (this.isSelected(choice)) {
+          this.setQty(choice, 0)
+        } else {
+          this.setQty(choice, 1)
+        }
+      },
+      getQty (choice) {
+        return this.selected.filter(c => c === choice).length
+      },
+      setQty (choice, newValue) {
+        var max = choice.maxSelectable
+        if (!this.selectable) return
+        if (max > 0 && newValue > max) return
+        if (newValue < 0) return
+        this.setSelection(choice, newValue)
+      }
     }
-}
+  }
 </script>
 
 <style scoped lang="scss">
@@ -88,10 +126,16 @@
   header {
     display: flex;
     align-items: baseline;
+    flex-wrap: wrap;
   }
-  .maxSelectable, .price {
-    font-style: italic;
+  .qtyButtons {
+    user-select: none; // stop accidental selection when clicking qty increments
+  }
+  .maxSelectable, .price, span.qty, .qtyButtons {
     margin-left: 1em;
+  }
+  .maxSelectable, .price, span.qty {
+    font-style: italic;
     color: rgb(128, 128, 128);
   }
   .price.gain::before {
@@ -101,6 +145,10 @@
   .price.cost::before {
     content: 'Cost:';
     color: #842323;
+  }
+  .disabled {
+    opacity: 0.3;
+    pointer-events: none;
   }
   .selected {
     position: relative;

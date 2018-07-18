@@ -1,27 +1,39 @@
 export default {
   methods: {
-    toggleChoiceSelection (choice) {
-      if (!this.isSelected(choice)) this.unselectNeighboursIfNecessary(choice)
+    setSelection (choice, qty) {
+      this.unselectNeighboursIfNecessary(choice, qty)
 
       if (this.deckData === this.$root.deckData) { // deckData is root
-        var index = this.$root.selectedIds.indexOf(choice.id)
-        if (index < 0) {
-          this.$root.selectedIds.push(choice.id)
-        } else {
-          this.$root.selectedIds.splice(index, 1)
+        var qtyDelta = qty - this.selected.filter(c => c === choice).length
+
+        if (qtyDelta > 0) {
+          while (qtyDelta-- !== 0) this.selectOne(choice)
+        } else if (qtyDelta < 0) {
+          while (qtyDelta++ !== 0) this.unselectOne(choice)
         }
       } else {
-        this.$emit('choiceSelectionToggled', choice)
+        this.$emit('selectionChanged', choice, qty)
       }
     },
-    unselectNeighboursIfNecessary (choice) {
+    unselectNeighboursIfNecessary (choice, qty) {
+      if (!this.deckData.contains || !this.deckData.maxSelectable) return
+      var qtyOver = this.selected
+        .filter(id => id !== choice.id)
+        .length + qty - this.deckData.maxSelectable
       // if a new selection will tip the number of selected
       // over the max allowable amount of selected then
       // unselect one first
-      if (this.selected.length >= this.deckData.maxSelectable) {
-        var firstSelected = this.choices.find(choice => this.isSelected(choice))
-        if (firstSelected) this.toggleChoiceSelection(firstSelected)
+      while (qtyOver-- > 0) {
+        this.unselectOne(this.selected[0])
       }
+    },
+    unselectOne (choice) {
+      var index = this.$root.selectedIds.indexOf(choice.id)
+      if (index === -1) throw new Error()
+      this.$root.selectedIds.splice(index, 1)
+    },
+    selectOne (choice) {
+      this.$root.selectedIds.push(choice.id)
     },
     getStatusHash () {
       // get min number of bytes required to represent choice ids

@@ -48,7 +48,7 @@
           :level="level+1"
           :selectable="selectable"
           :hideNotSelected="hideNotSelected"
-          @choiceSelectionToggled="toggleChoiceSelection"
+          @selectionChanged="setSelection"
         />
         <view-deck-card-choice 
           v-else
@@ -56,7 +56,7 @@
           :selectable="selectable"
           :selected="isSelected(child)"
           :hideNotSelected="hideNotSelected"
-          @choiceSelectionToggled="toggleChoiceSelection"
+          @selectionChanged="setSelection"
         />
       </li>
     </ul>

@@ -20,20 +20,22 @@
           "description": "The place where things happen, career opportunities, Nightlife, the weird and the wonderful. It an also be a place of great isolation. Sometimes you might find yourself alone in a crowd of people.",
           "img": "city.jpg",
           "imgSource": "https://www.pexels.com/photo/architecture-buildings-business-city-374870/",
+          "maxSelectable": 1,
           "cost": 5
         },
         {
           "title": "Suburbs",
           "id": 6,
-          "description": "The burbs; Backyards, plenty of room to bike around, bit calmer than the city but less disconnected than anywhere more rural. Where the suburb anthem of lawn mowers and whipper snippers plays every saturday morning.",
+          "description": "The burbs; Backyards, plenty of room to bike around, bit calmer than the city but less disconnected than anywhere more rural. Where the suburb anthem of lawn mowers and whipper snippers plays every Saturday morning.\n<br><br>\nYou can pick up to 3 of this one.",
           "img": "suburbs.jpg",
           "imgSource": "https://www.pexels.com/photo/apartment-architecture-buildings-cars-243722/",
+          "maxSelectable": "3",
           "cost": 3
         },
         {
           "title": "Countryside",
           "id": 7,
-          "description": "Space for days. Life here tends to be pretty quite and straight forward. You might be out of luck though if you're not interested in farming or running a general store.",
+          "description": "Space for days. Life here tends to be pretty quite and straight forward. You might be out of luck though if you're not interested in farming or running a general store.\n<br><br>\nYou can pick unlimited amounts of this one.",
           "img": "farm.jpg",
           "imgSource": "https://www.pexels.com/photo/houses-in-farm-against-cloudy-sky-248880/",
           "cost": 2
@@ -44,6 +46,7 @@
           "description": "If you appreciate getting away from it all then this might be your dream local. Just don't expect too many modern conveniences",
           "img": "island.jpg",
           "imgSource": "https://www.pexels.com/photo/island-covered-with-green-trees-under-the-clear-skies-188029/",
+          "maxSelectable": 1,
           "cost": 3
         }
       ]
@@ -63,6 +66,7 @@
               "description": "The wear of an engine after you've giving it a good going over brings you a supreme joy. Average pay.",
               "img": "mechanic.jpg",
               "imgSource": "https://www.pexels.com/photo/architecture-buildings-business-city-374870/",
+              "maxSelectable": 1,
               "cost": 5
             },
             {
@@ -71,6 +75,7 @@
               "description": "You've loved making things ever since you were knee-high to a grasshopper. You still get to do some of that among the more boring parts of your job. But you get paid pretty good money so that always helps.",
               "img": "engineer.jpg",
               "imgSource": "https://www.pexels.com/photo/people-laptop-industry-internet-132700/",
+              "maxSelectable": 1,
               "cost": 5
             },
             {
@@ -79,6 +84,7 @@
               "description": "Maybe you make movies or produce music. But whatever it is you've fought hard to make your passion a viable career. The pay's not great but it's enough and you spend your days doing what you love.",
               "img": "entertainment.jpg",
               "imgSource": "https://www.pexels.com/photo/audio-business-computer-connection-265672/",
+              "maxSelectable": 1,
               "cost": 5
             }
           ]
@@ -95,6 +101,7 @@
               "description": "You enjoy nothing more than the satisfaction of capturing a slice of the world in an image.",
               "img": "photography.jpg",
               "imgSource": "https://www.pexels.com/photo/camera-canon-digital-dslr-459735/",
+              "maxSelectable": 1,
               "cost": -5
             },
             {
@@ -103,6 +110,7 @@
               "description": "When you paint you enter a semi-meditative state, the whole world seems lighter.",
               "img": "painting.jpg",
               "imgSource": "https://www.pexels.com/photo/brush-painting-color-paint-102127/",
+              "maxSelectable": 1,
               "cost": 0
             },
             {
@@ -111,6 +119,7 @@
               "description": "You've never been able to keep still and dance allows you to channel that energy.",
               "img": "dance.jpg",
               "imgSource": "https://www.pexels.com/photo/dancing-dance-people-hip-hop-12312/",
+              "maxSelectable": 1,
               "cost": 5
             }
           ]

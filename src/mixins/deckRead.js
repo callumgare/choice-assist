@@ -36,7 +36,11 @@ export default {
       return this.subtreeNodes(subtree).filter(node => node.contains)
     },
     subtreeSelected (subtree) {
-      return this.subtreeChoices(subtree).filter(choice => this.isSelected(choice))
+      var choicesMap = {}
+      this.subtreeChoices(subtree).forEach(choice => { choicesMap[choice.id] = choice })
+      return this.$root.selectedIds
+        .filter(id => choicesMap[id])
+        .map(id => choicesMap[id])
     }
   },
   computed: {
