@@ -1,12 +1,12 @@
 {
   "name": "choice-assist",
-  "version": "1.1.0",
-  "description": "A web app for making deck-builing style interactive choose your own adventures",
+  "version": "1.1.1",
+  "description": "A web app for making deck-building style interactive choose your own adventures",
   "author": "Callum Gare <callum@gare.com.au>",
   "repository": "github:callumgare/choice-assist",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "./start.sh",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",

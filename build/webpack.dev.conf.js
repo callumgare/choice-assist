@@ -42,7 +42,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       app.use("/assets", glitchAssets())
     },
     public: envIsGlitch 
-      ? process.env.PROJECT_NAME + '.glitch.me'
+      ? process.env.PROJECT_DOMAIN + '.glitch.me'
       : undefined, // if run in glitch.com then set public
     disableHostCheck: envIsGlitch
       ? true
