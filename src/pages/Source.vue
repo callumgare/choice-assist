@@ -10,7 +10,7 @@
       the server time to reload, click the <em>Reload Data From Server</em> button.
     </p>
     <p>
-      <strong>⚠️ Be careful that you've done this else you'll lose your changes. ⚠️</strong>
+      <strong>⚠️ Be careful you have followed these instuctions else you'll lose your changes. ⚠️</strong>
     </p>
     <textarea 
       @focus="$event.target.select()" 

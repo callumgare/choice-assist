@@ -1,25 +1,27 @@
 <template>
   <div id="page" :class="view + 'View'">
-    <edit-deck-card-group
-      v-if="view === 'content'"
-      :groupData="deckData"
-      :level="1"
-    />
-    <template v-else-if="view === 'structure'">
-      <p>
-        Drag to reorder
-      </p>
-      <edit-deck-flat
+    <main>
+      <edit-deck-card-group
+        v-if="view === 'content'"
         :groupData="deckData"
         :level="1"
       />
-    </template>
-    <textarea 
-      v-else
-      @focus="$event.target.select()" 
-      @click="$event.target.select()"
-      v-model="deckDataJSON">
-    </textarea>
+      <template v-else-if="view === 'structure'">
+        <p>
+          Drag to reorder
+        </p>
+        <edit-deck-flat
+          :groupData="deckData"
+          :level="1"
+        />
+      </template>
+      <textarea 
+        v-else
+        @focus="$event.target.select()" 
+        @click="$event.target.select()"
+        v-model="deckDataJSON">
+      </textarea>
+    </main>
     <footer :class="{overBudget: remaining < 0}">
       <div>
         <div>

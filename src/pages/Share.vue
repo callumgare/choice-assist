@@ -1,33 +1,51 @@
 <template>
   <div id="page" :class="{hideNotSelected}">
-    <div v-if="selected.length === 0">
-      Nothing selected 
-    </div>
-    <view-deck-flat
-      v-else-if="view === 'flat'"
-      :groupData="deckData"
-      :hideNotSelected="hideNotSelected"
-      :level="1"
-    />
-    <view-deck-card-group
-      v-else
-      :groupData="deckData"
-      :hideNotSelected="hideNotSelected"
-      :level="1"
-      :description="'<p><b>To share your choices simply copy the current page address</b><p>'+deckData.description"
-    />
+    <main>
+      <div v-if="selected.length === 0">
+        Nothing selected 
+      </div>
+      <div v-else>
+        <div class="share-summary">
+          The choices have been made.
+        </div>
+        <view-deck-flat
+          v-if="view === 'flat'"
+          :groupData="deckData"
+          :hideNotSelected="hideNotSelected"
+          :level="1"
+        />
+        <view-deck-card-group
+          v-else
+          :groupData="deckData"
+          :hideNotSelected="hideNotSelected"
+          :level="1"
+        />
+      </div>
+      <modal-box v-if="showShareDetails" @close="showShareDetails = false">
+        <h3 slot="header">Share Details</h3>
+        <div slot="body"> 
+          <span>
+            To share simply copy and send the following link:
+          </span>
+          <input class="share-url" type="text" :value="shareUrl" autofocus>
+        </div>
+      </modal-box>
+    </main>
     <footer>
       <div>
-        <button @click="toggleView">
-          {{this.view === 'card' ? 'Flat' : 'Card'}} View
-        </button>
         <button @click="toggleHideNotSelected">
           {{this.hideNotSelected ? 'Show' : 'Hide'}} Unchosen
         </button>
+        <button @click="toggleView">
+          {{this.view === 'card' ? 'Flat' : 'Card'}} View
+        </button>
+        <button @click="editChoices">
+          Edit Choices
+        </button>
       </div>
       <div>
-        <button @click="editChoices">
-          Edit Selection
+        <button class="success" @click="showShareDetails = true">
+          Share Choices
         </button>
       </div>
     </footer>
@@ -37,6 +55,7 @@
 <script>
 import ViewDeckCardGroup from '@/components/ViewDeckCardGroup.vue'
 import ViewDeckFlat from '@/components/ViewDeckFlat.vue'
+import ModalBox from '@/components/ModalBox.vue'
 import deckMixin from '@/mixins/deck'
 export default {
   name: 'Share',
@@ -45,7 +64,8 @@ export default {
   data () {
     return {
       hideNotSelected: true,
-      view: 'card'
+      view: 'card',
+      showShareDetails: false
     }
   },
   created () {
@@ -53,7 +73,12 @@ export default {
       this.restoreStatusHash(this.$route.params.hash, this.deckData)
     }
   },
-  components: {ViewDeckCardGroup, ViewDeckFlat},
+  components: {ViewDeckCardGroup, ViewDeckFlat, ModalBox},
+  computed: {
+    shareUrl () {
+      return window.location.href
+    }
+  },
   methods: {
     toggleHideNotSelected () {
       this.hideNotSelected = !this.hideNotSelected
@@ -71,4 +96,12 @@ export default {
 <style scoped lang="scss">
   @import '../mixins/deck.scss';
   @import '../mixins/ui.scss';
+  .share-summary {
+    text-align: center;
+  }
+  .modal-box .share-url {
+    display: block;
+    width: 100%;
+    margin: 0.5em 0;
+  }
 </style>

@@ -1,19 +1,21 @@
 <template>
   <div id="page" :class="view + 'View'">
-    <view-deck-flat
-      v-if="view === 'flat'"
-      :groupData="deckData"
-      :selectable="true"
-      :level="1"
-      @selectionChanged="setSelection"
-    />
-    <view-deck-card-group
-      v-else
-      :groupData="deckData"
-      :level="1"
-      :selectable="true"
-      @selectionChanged="setSelection"
-    />
+    <main>
+      <view-deck-flat
+        v-if="view === 'flat'"
+        :groupData="deckData"
+        :selectable="true"
+        :level="1"
+        @selectionChanged="setSelection"
+      />
+      <view-deck-card-group
+        v-else
+        :groupData="deckData"
+        :level="1"
+        :selectable="true"
+        @selectionChanged="setSelection"
+      />
+    </main>
     <footer :class="{overBudget: remaining < 0}">
       <div>
         <span class="remaining">
