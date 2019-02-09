@@ -1,3 +1,10 @@
+const envIsGlitch = !!process.env.PROJECT_NAME
+var glitchAssets
+try {
+  glitchAssets = require('raw-loader!@/../.glitch-assets') // eslint-disable-line import/no-webpack-loader-syntax
+  glitchAssets = glitchAssets.split('\n').map(asset => JSON.parse(asset))
+} catch (e) {
+}
 export default {
   methods: {
     setSelection (choice, qty) {
@@ -128,6 +135,10 @@ export default {
           return a - b
         })
       return JSON.stringify(deckDataCopy, keys, 2)
+    },
+    getAssetUrl (filename) {
+      var cdnEntry = glitchAssets && glitchAssets.find(entry => entry.name === filename)
+      return envIsGlitch && cdnEntry ? cdnEntry.url : '/assets/' + filename
     }
   }
 }

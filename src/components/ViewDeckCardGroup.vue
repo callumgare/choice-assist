@@ -29,7 +29,7 @@
       </p>
       <p class="description" v-if="groupData.description" v-html="groupData.description"></p>
       <div class="image">
-        <img v-if="groupData.img" :src="'/assets/'+groupData.img">
+        <img v-if="groupData.img" :src="this.getAssetUrl(groupData.img)">
       </div>
       <a v-if="groupData.imgSource" class="imgSource" :href="groupData.imgSource" @click.stop target="_blank">Image Source</a>
     </section>

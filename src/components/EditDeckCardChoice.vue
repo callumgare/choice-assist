@@ -61,7 +61,7 @@
     },
     computed: {
       imageSRC () {
-        return '/assets/' + this.choiceData.img
+        return this.getAssetUrl(this.choiceData.img)
       },
       maxSelectable: {
         // getter

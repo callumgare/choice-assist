@@ -5,7 +5,7 @@ module.exports = {
       useBuiltIns: "usage"
     }]
   ],
-  plugins: ["transform-vue-jsx"],
+  plugins: ["transform-vue-jsx", "@babel/plugin-syntax-dynamic-import"],
   env: {
     test: {
       presets: [

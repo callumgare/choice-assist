@@ -30,7 +30,7 @@
         ></input>
       </span>
       <div class="image">
-        <img v-if="groupData.image" :src="'/assets/'+groupData.image">
+        <img v-if="groupData.image" :src="this.getAssetUrl(groupData.image)">
       </div>
       <input 
         v-if="groupData.image"
