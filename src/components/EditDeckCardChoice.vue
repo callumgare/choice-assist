@@ -48,8 +48,11 @@
 </template>
 
 <script lang="js">
+  import deckMixin from '../mixins/deck'
+  
   export default {
     name: 'edit-deck-card-choice',
+    mixins: [deckMixin],
     props: ['choiceData'],
     created () {
       this.checkImageExistance()
