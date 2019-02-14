@@ -2,7 +2,12 @@ const envIsGlitch = !!process.env.PROJECT_NAME
 var glitchAssets
 try {
   glitchAssets = require('raw-loader!@/../.glitch-assets') // eslint-disable-line import/no-webpack-loader-syntax
-  glitchAssets = glitchAssets.split('\n').map(asset => JSON.parse(asset))
+  glitchAssets = glitchAssets.split('\n').map(asset => {
+    try {
+      return JSON.parse(asset)
+    } catch (e) {
+    }
+  }).filter(asset => asset)
 } catch (e) {
 }
 export default {
