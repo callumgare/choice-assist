@@ -10,8 +10,7 @@
             "^build/",
             "^config/",
             "^package\\.json$",
-            "^\\.env$",
-            ".glitch-assets"
+            "^\\.env$"
         ]
     }
 }

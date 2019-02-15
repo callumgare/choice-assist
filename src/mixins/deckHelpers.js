@@ -1,13 +1,14 @@
-const envIsGlitch = !!process.env.PROJECT_NAME
 var glitchAssets
 try {
-  glitchAssets = require('raw-loader!@/../.glitch-assets') // eslint-disable-line import/no-webpack-loader-syntax
-  glitchAssets = glitchAssets.split('\n').map(asset => {
-    try {
-      return JSON.parse(asset)
-    } catch (e) {
-    }
-  }).filter(asset => asset)
+  if (process.env.ISGLITCH) {
+    glitchAssets = require('raw-loader!@/../.glitch-assets') // eslint-disable-line import/no-webpack-loader-syntax
+    glitchAssets = glitchAssets.split('\n').map(asset => {
+      try {
+        return JSON.parse(asset)
+      } catch (e) {
+      }
+    }).filter(asset => asset)
+  }
 } catch (e) {
 }
 export default {
@@ -143,7 +144,12 @@ export default {
     },
     getAssetUrl (filename) {
       var cdnEntry = glitchAssets && glitchAssets.find(entry => entry.name === filename)
-      return envIsGlitch && cdnEntry ? cdnEntry.url : '/assets/' + filename
+      return cdnEntry ? cdnEntry.url : '/assets/' + filename
+    }
+  },
+  computed: {
+    glitchAssets () {
+      return glitchAssets
     }
   }
 }

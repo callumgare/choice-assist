@@ -2,7 +2,6 @@
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
-const glitchAssets = () => require('./glitch-assets')
 const merge = require('webpack-merge')
 const path = require('path')
 const fs = require('fs')
@@ -12,8 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const deckData = require('../src/deckData.json')
-
-const envIsGlitch = !!process.env.PROJECT_NAME
+const env = require('../config/dev.env')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -31,20 +29,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
-        { from: /assets\/.*/, to: () => {} },
+        { from: /assets\/.*/, to: params => params.parsedUrl.pathname },
         { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, 'index.html') },
       ],
     },
     hot: true,
-    before: function(app) {
-      // if run in glitch.com then get assets from CDN
-      if (!envIsGlitch || !fs.existsSync('.glitch-assets')) return
-      app.use("/assets", glitchAssets())
-    },
-    public: envIsGlitch 
+    public: env.ISGLITCH
       ? process.env.PROJECT_DOMAIN + '.glitch.me'
       : undefined, // if run in glitch.com then set public
-    disableHostCheck: envIsGlitch
+    disableHostCheck: env.ISGLITCH
       ? true
       : config.dev.disableHostCheck, // since glitch.com runs app behind proxy
     contentBase: false, // since we use CopyWebpackPlugin.

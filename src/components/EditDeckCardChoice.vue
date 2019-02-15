@@ -107,6 +107,11 @@
     methods: {
       async checkImageExistance () {
         if (!this.choiceData.img) return false
+        const isGlitchUrl = this.glitchAssets && this.glitchAssets.find(entry => entry.name === this.choiceData.img)
+        if (isGlitchUrl) {
+          this.imageExists = true
+          return
+        }
         var res = await fetch(this.imageSRC)
         this.imageExists = res.status === 200
       }
