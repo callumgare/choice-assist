@@ -10,7 +10,8 @@
             "^build/",
             "^config/",
             "^package\\.json$",
-            "^\\.env$"
+            "^\\.env$",
+            "^src/deckData.json"
         ]
     }
 }
