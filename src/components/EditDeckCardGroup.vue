@@ -13,12 +13,12 @@
       <p class="selectableLimit">
         <span>Minimum Selectable:</span>
         <input
-          v-model="groupData.minSelectable"
+          v-model.number="groupData.minSelectable"
           type="number"
         ></input><br>
         <span>Maximum Selectable:</span>
         <input
-          v-model="groupData.maxSelectable"
+          v-model.number="groupData.maxSelectable"
           type="number"
         ></input>
       </p>
@@ -41,10 +41,10 @@
         Image could not be found. Make sure an image with the same file name exists in the assets folder.
       </span>
       <input 
-        v-if="imageExists || deckData.imageSource"
+        v-if="imageExists || deckData.imgSource"
         class="imageSource"
         placeholder="Image Source"
-        v-model="deckData.imageSource"
+        v-model="deckData.imgSource"
       ></input>
     </section>
     <ul class="choice-group">

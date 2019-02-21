@@ -29,7 +29,7 @@
           <input
             class="budget"
             type="number"
-            v-model="deckData.budget"
+            v-model.number="deckData.budget"
           >
         </div>
       </div>

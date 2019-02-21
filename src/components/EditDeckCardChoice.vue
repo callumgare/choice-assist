@@ -23,7 +23,7 @@
     <label>Price</label>
     <input 
       class="price" 
-      v-model="choiceData.cost"
+      v-model.number="choiceData.cost"
       type="number"
     ></input>
     <label>How many times can this be selected</label>
@@ -35,7 +35,7 @@
     <template v-if="selectability === 'limited'">
       <span>Maximum Selectable</span>
       <input  
-        v-model="maxSelectable"
+        v-model.number="maxSelectable"
         type="number"
         min="2"
       ></input>
