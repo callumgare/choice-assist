@@ -7,7 +7,7 @@
       <img v-if="choiceData.img" :src="imageSRC">
     </div>
     <div class="horizontal">
-      <a class="imgSource" :href="choiceData.imgSource" @click.stop target="_blank">Image Source</a>
+      <a v-if="choiceData.imgSource" class="imgSource" :href="choiceData.imgSource" @click.stop target="_blank">Image Source</a>
       <p :class="['price', {cost: choiceData.cost > 0, gain: choiceData.cost < 0, neutral: !choiceData.cost || choiceData.cost === 0}]">
         {{ isNaN(choiceData.cost) || choiceData.cost === 0 ? 'No Cost' : Math.abs(choiceData.cost)+' Points' }}
       </p>
@@ -137,4 +137,7 @@
   .horizontal > * {
     margin: 0.5em 0;
   }
+  
+  /* Custom CSS */
+  /* ... */
 </style>

@@ -76,4 +76,7 @@ export default {
     width: 100%;
     height: 40em;
   }
+  
+  /* Custom CSS */
+  /* ... */
 </style>

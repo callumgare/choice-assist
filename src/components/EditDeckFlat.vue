@@ -22,7 +22,7 @@
       >
         <edit-deck-flat
           v-if="child.contains"
-          :groupData="child"
+          :group-data="child"
           @deleted="deleteItem(child)"
         />
         <div 
@@ -184,4 +184,7 @@
     margin: 0 1em;
     padding: 1em 0;
   }
+  
+  /* Custom CSS */
+  /* ... */
 </style>

@@ -109,80 +109,83 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../mixins/ui.scss';
-#page {
-  padding: 2em;
-  max-width: 40em;
-  margin: auto;
-  font-size: 1.3em;
-}
+  @import '../mixins/ui.scss';
+  #page {
+    padding: 2em;
+    max-width: 40em;
+    margin: auto;
+    font-size: 1.3em;
+  }
 
-h1 {
-  font-size: 2.5em;
-}
+  h1 {
+    font-size: 2.5em;
+  }
 
-a {
-  color: #0768c1;
-}
+  a {
+    color: #0768c1;
+  }
 
-dt {
-  font-weight: bold;
-}
+  dt {
+    font-weight: bold;
+  }
 
-hr {
-  margin: 2em 0;
-}
-textarea {
-  width: 100%;
-  min-height: 40em;
-}
+  hr {
+    margin: 2em 0;
+  }
+  textarea {
+    width: 100%;
+    min-height: 40em;
+  }
 
-summary {
-  display: block;
-  position: relative;
-}
-
-summary::-webkit-details-marker {
-  display: none;
-}
-
-summary::before {
-  content: '😵';
-  padding-right: 0.2em;
-  transition: transform 0.5s;
-  display: inline-block;
-}
-
-summary:focus {
-    outline: none;
-}
-summary:focus::after {
-    content: '';
+  summary {
     display: block;
-    background-color: #0c93e7;
-    position: absolute;
-    left: -15px;
-    top: 0;
-    bottom: 0;
-    width: 5px;
-}
+    position: relative;
+  }
 
-details[open] > summary::before {
-  transform: rotate(90deg);
-}
+  summary::-webkit-details-marker {
+    display: none;
+  }
 
-details[open] summary ~ * 
-{
- animation: sweep .5s ease-in-out;
- animation-fill-mode: forwards;
-}
+  summary::before {
+    content: '😵';
+    padding-right: 0.2em;
+    transition: transform 0.5s;
+    display: inline-block;
+  }
 
-@keyframes sweep 
-{
- 0%    {opacity: 0; margin-left: 0em}
- 100%  {opacity: 1; margin-left: 1em}
-}
-details {
-  margin: 1em 0;
-}
+  summary:focus {
+      outline: none;
+  }
+  summary:focus::after {
+      content: '';
+      display: block;
+      background-color: #0c93e7;
+      position: absolute;
+      left: -15px;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+  }
+
+  details[open] > summary::before {
+    transform: rotate(90deg);
+  }
+
+  details[open] summary ~ * 
+  {
+  animation: sweep .5s ease-in-out;
+  animation-fill-mode: forwards;
+  }
+
+  @keyframes sweep 
+  {
+  0%    {opacity: 0; margin-left: 0em}
+  100%  {opacity: 1; margin-left: 1em}
+  }
+  details {
+    margin: 1em 0;
+  }
+  
+  /* Custom CSS */
+  /* ... */
 </style>

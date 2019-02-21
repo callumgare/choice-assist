@@ -121,4 +121,7 @@ export default {
 <style scoped lang="scss">
   @import '../mixins/deck.scss';
   @import '../mixins/ui.scss';
+  
+  /* Custom CSS */
+  /* ... */
 </style>
