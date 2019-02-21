@@ -8,12 +8,13 @@
       class="imageFilename"
       placeholder="Image Filename"
       v-model="choiceData.img"
-
     ></input>
     <div v-if="imageExists">
-      <img v-if="choiceData.img" :src="imageSRC">
+      <img :src="imageSrc">
     </div>
-    <span class="imageMsg" v-else>Image could not be found. Make sure an image with the same file name exists in the assets folder.</span>
+    <span class="imageMsg" v-else-if="deckData.img">
+      Image could not be found. Make sure an image with the same file name exists in the assets folder.
+    </span>
     <label>URL of Image Source</label>
     <input 
       class="imgSource" 
@@ -54,18 +55,11 @@
     name: 'edit-deck-card-choice',
     mixins: [deckMixin],
     props: ['choiceData'],
-    created () {
-      this.checkImageExistance()
-    },
     data () {
       return {
-        imageExists: !!this.choiceData.img
       }
     },
     computed: {
-      imageSRC () {
-        return this.getAssetUrl(this.choiceData.img)
-      },
       maxSelectable: {
         // getter
         get: function () {
@@ -92,7 +86,6 @@
         },
         // setter
         set: function (newValue) {
-          console.log(newValue, this.choiceData.maxSelectable)
           if (newValue === 'once') {
             this.$set(this.choiceData, 'maxSelectable', 1)
           } else if (newValue === 'limited') {
@@ -100,25 +93,7 @@
           } else if (newValue === 'unlimited') {
             this.$set(this.choiceData, 'maxSelectable', undefined)
           }
-          console.log(this.choiceData.maxSelectable)
         }
-      }
-    },
-    methods: {
-      async checkImageExistance () {
-        if (!this.choiceData.img) return false
-        const isGlitchUrl = this.glitchAssets && this.glitchAssets.find(entry => entry.name === this.choiceData.img)
-        if (isGlitchUrl) {
-          this.imageExists = true
-          return
-        }
-        var res = await fetch(this.imageSRC)
-        this.imageExists = res.status === 200
-      }
-    },
-    watch: {
-      'choiceData.img' () {
-        this.checkImageExistance()
       }
     }
 }

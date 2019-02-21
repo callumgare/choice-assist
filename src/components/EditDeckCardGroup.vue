@@ -11,6 +11,11 @@
         <input v-model="groupData.version" placeholder="Deck Version">
       </p>
       <p class="selectableLimit">
+        <span>Minimum Selectable:</span>
+        <input
+          v-model="groupData.minSelectable"
+          type="number"
+        ></input><br>
         <span>Maximum Selectable:</span>
         <input
           v-model="groupData.maxSelectable"
@@ -26,17 +31,20 @@
         <span>Image Filename:</span>
         <input 
           placeholder="Image Filename"
-          v-model="groupData.image"
+          v-model="groupData.img"
         ></input>
       </span>
-      <div class="image">
-        <img v-if="groupData.image" :src="this.getAssetUrl(groupData.image)">
+      <div v-if="imageExists">
+        <img :src="imageSrc">
       </div>
+      <span class="imageMsg" v-else-if="deckData.img">
+        Image could not be found. Make sure an image with the same file name exists in the assets folder.
+      </span>
       <input 
-        v-if="groupData.image"
+        v-if="imageExists || deckData.imageSource"
         class="imageSource"
         placeholder="Image Source"
-        v-model="groupData.imageSource"
+        v-model="deckData.imageSource"
       ></input>
     </section>
     <ul class="choice-group">

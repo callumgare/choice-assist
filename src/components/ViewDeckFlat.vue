@@ -13,6 +13,12 @@
       >
         Max: {{groupData.maxSelectable}}
       </span>
+      <span 
+        v-if="groupData.minSelectable"
+        class="minSelectable"
+      >
+        Min: {{groupData.minSelectable}}
+      </span>
     </header>
     <ul class="choice-group">
       <li v-for="child in visableContains" :key="child.id" :class="{selected: isSelected(child) && !hideNotSelected, selectable}">
@@ -131,10 +137,10 @@
   .qtyButtons {
     user-select: none; // stop accidental selection when clicking qty increments
   }
-  .maxSelectable, .price, span.qty, .qtyButtons {
+  .maxSelectable, .minSelectable, .price, span.qty, .qtyButtons {
     margin-left: 1em;
   }
-  .maxSelectable, .price, span.qty {
+  .maxSelectable, .minSelectable, .price, span.qty {
     font-style: italic;
     color: rgb(128, 128, 128);
   }

@@ -55,9 +55,7 @@
     mixins: [deckMixin],
     props: [
       'groupData',
-      'level',
-      'maxSelectable',
-      'selectable'
+      'level'
     ],
     data () {
       return {

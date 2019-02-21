@@ -150,6 +150,23 @@ export default {
   computed: {
     glitchAssets () {
       return glitchAssets
+    },
+    imageSrc () {
+      return this.getAssetUrl(this.deckData.img)
+    }
+  },
+  asyncComputed: {
+    async imageExists () {
+      const filename = this.deckData.img
+      if (!filename) return false
+      if (this.glitchAssets) {
+        const isGlitchUrl = this.glitchAssets.find(entry => entry.name === this.deckData.img)
+        return !!isGlitchUrl
+      } else {
+        var res = await fetch(this.imageSrc)
+        if (filename !== this.deckData.img) return // if the filename has changed since we started checking if it exists then exit
+        return res.status === 200
+      }
     }
   }
 }

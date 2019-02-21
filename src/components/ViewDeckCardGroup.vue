@@ -22,16 +22,17 @@
           v{{ groupData.version }}
         </span>
       </p>
-      <p class="selectableLimit" v-if="groupData.maxSelectable">
-        A maximum of {{groupData.maxSelectable}} 
-        choice{{groupData.maxSelectable > 1 ? 's' : ''}}
-        can be selected
-      </p>
+      <p 
+        :class="['selectionRequirements', {selectionRequirementsMet}]" 
+        v-html="selectionRequirementsMsg"
+      ></p>
       <p class="description" v-if="groupData.description" v-html="groupData.description"></p>
-      <div class="image">
-        <img v-if="groupData.img" :src="this.getAssetUrl(groupData.img)">
+      <div v-if="groupData.img" class="image">
+        <img :src="this.getAssetUrl(groupData.img)">
       </div>
-      <a v-if="groupData.imgSource" class="imgSource" :href="groupData.imgSource" @click.stop target="_blank">Image Source</a>
+      <a v-if="groupData.imgSource" class="imgSource" :href="groupData.imgSource" @click.stop target="_blank">
+        Image Source
+      </a>
     </section>
     <ul class="choice-group">
       <li 
@@ -82,6 +83,24 @@
           if (this.isSelected(child)) return true
           if (child.contains && this.subtreeSelected(child).length > 0) return true
         })
+      },
+      selectionRequirementsMsg () {
+        const min = this.groupData.minSelectable
+        const max = this.groupData.maxSelectable
+        if (min && min === max) {
+          return 'Choose ' + max
+        } else if (min && max) {
+          return 'Choose at least ' + min + ' but no more than ' + max
+        } else if (min) {
+          return 'Choose at least ' + min
+        } else if (max) {
+          return 'Choose up to ' + max
+        } else {
+          return null
+        }
+      },
+      selectionRequirementsMet () {
+        return !this.groupData.minSelectable || this.subtreeSelected(this.groupData).length >= this.groupData.minSelectable
       }
     },
     components: {ViewDeckCardChoice}
@@ -171,8 +190,12 @@
     flex-wrap: wrap;
     justify-content: center;
   }
-  .selectableLimit {
+  .selectionRequirements {
     font-weight: bold;
+    color: #ff6200;
+  }
+  .selectionRequirementsMet {
+    color: unset;
   }
   .description {
     //background-color: #99d8ff;

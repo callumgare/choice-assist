@@ -50,9 +50,9 @@
           v-text="(this.view === 'card' ? 'Flat' : 'Card') + ' View'"
         />
         <button
-          :disabled="remaining < 0" 
+          :disabled="!!changeRequiredMsg" 
           @click="confirmChoices"
-          v-text="remaining < 0 ? 'Over Budget' : 'Confirm Choices'"
+          v-text="changeRequiredMsg ? changeRequiredMsg : 'Confirm Choices'"
         />
       </div>
     </footer>
@@ -86,6 +86,21 @@ export default {
     },
     remaining () {
       return this.deckData.budget - this.spent
+    },
+    groupsNeedingMoreSelections () {
+      return this.choiceGroups
+        .filter(group => group.minSelectable > 0)
+        .filter(group => this.subtreeSelected(group) < group.minSelectable)
+    },
+    changeRequiredMsg () {
+      const msgs = []
+      if (this.groupsNeedingMoreSelections.length > 0) {
+        msgs.push('More Selections Required')
+      }
+      if (this.remaining < 0) {
+        msgs.push('Over Budget')
+      }
+      return msgs.length > 0 ? msgs.join(' & ') : null
     }
   },
   components: {ViewDeckCardGroup, ViewDeckFlat},

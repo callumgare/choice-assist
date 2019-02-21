@@ -59,6 +59,7 @@
           "title": "Job",
           "id": 13,
           "description": "Your main and presumably paid occupation.",
+          "maxSelectable": "2",
           "contains": [
             {
               "title": "Mechanic",
@@ -94,6 +95,7 @@
           "id": 14,
           "description": "What do you do in your down time?",
           "maxSelectable": "1",
+          "minSelectable": "1",
           "contains": [
             {
               "title": "Photography",
