@@ -46,19 +46,19 @@
       >
         <view-deck-card-group
           v-if="child.contains"
-          :groupData="child"
+          :group-data="child"
           :level="level+1"
           :selectable="selectable"
-          :hideNotSelected="hideNotSelected"
-          @selectionChanged="setSelection"
+          :hide-not-selected="hideNotSelected"
+          @selection-changed="setSelection"
         />
         <view-deck-card-choice 
           v-else
-          :choiceData="child"
+          :choice-data="child"
           :selectable="selectable"
           :selected="isSelected(child)"
-          :hideNotSelected="hideNotSelected"
-          @selectionChanged="setSelection"
+          :hide-not-selected="hideNotSelected"
+          @selection-changed="setSelection"
         />
       </li>
     </ul>

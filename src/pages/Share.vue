@@ -10,14 +10,14 @@
         </div>
         <view-deck-flat
           v-if="view === 'flat'"
-          :groupData="deckData"
-          :hideNotSelected="hideNotSelected"
+          :group-data="deckData"
+          :hide-not-selected="hideNotSelected"
           :level="1"
         />
         <view-deck-card-group
           v-else
-          :groupData="deckData"
-          :hideNotSelected="hideNotSelected"
+          :group-data="deckData"
+          :hide-not-selected="hideNotSelected"
           :level="1"
         />
       </div>

@@ -24,10 +24,10 @@
       <li v-for="child in visableContains" :key="child.id" :class="{selected: isSelected(child) && !hideNotSelected, selectable}">
         <view-deck-flat
           v-if="child.contains"
-          :groupData="child"
-          :hideNotSelected="hideNotSelected"
+          :group-data="child"
+          :hide-not-selected="hideNotSelected"
           :selectable="selectable"
-          @selectionChanged="setSelection"
+          @selection-changed="setSelection"
         />
         <header v-else @click="clicked(child)">
           <h1>

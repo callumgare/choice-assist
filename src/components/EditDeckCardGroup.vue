@@ -4,7 +4,7 @@
       v-if="groupData.title"
       :class="['groupHeader', 'level'+level]"
     >
-      <input class="title" v-model="groupData.title"></input>      
+      <input class="title" v-model="groupData.title">      
       <p v-if="level === 1" class="deckInfo">
         <input v-model="groupData.author" placeholder="Author">
         <input v-model="groupData.authorLink" placeholder="Author Link">
@@ -15,12 +15,12 @@
         <input
           v-model.number="groupData.minSelectable"
           type="number"
-        ></input><br>
+        ><br>
         <span>Maximum Selectable:</span>
         <input
           v-model.number="groupData.maxSelectable"
           type="number"
-        ></input>
+        >
       </p>
       <textarea 
         class="description" 
@@ -32,8 +32,8 @@
         <input 
           placeholder="Image Filename"
           v-model="groupData.img"
-        ></input>
-      </span>
+        >
+      </p>
       <div v-if="imageExists">
         <img :src="imageSrc">
       </div>
@@ -45,7 +45,7 @@
         class="imageSource"
         placeholder="Image Source"
         v-model="deckData.imgSource"
-      ></input>
+      >
     </section>
     <ul class="choice-group">
       <li 
@@ -55,12 +55,12 @@
       >
         <edit-deck-card-group
           v-if="child.contains"
-          :groupData="child"
+          :group-data="child"
           :level="level+1"
         />
         <edit-deck-card-choice 
           v-else
-          :choiceData="child"
+          :choice-data="child"
         />
       </li>
     </ul>

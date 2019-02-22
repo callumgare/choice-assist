@@ -3,12 +3,12 @@
     <input 
       class="title" 
       v-model="choiceData.title"
-    ></input>
+    >
     <input 
       class="imageFilename"
       placeholder="Image Filename"
       v-model="choiceData.img"
-    ></input>
+    >
     <div v-if="imageExists">
       <img :src="imageSrc">
     </div>
@@ -19,13 +19,13 @@
     <input 
       class="imgSource" 
       v-model="choiceData.imgSource"
-    ></input>
+    >
     <label>Price</label>
     <input 
       class="price" 
       v-model.number="choiceData.cost"
       type="number"
-    ></input>
+    >
     <label>How many times can this be selected</label>
     <select v-model="selectability">
       <option value="once">Once</option>
@@ -38,7 +38,7 @@
         v-model.number="maxSelectable"
         type="number"
         min="2"
-      ></input>
+      >
     </template>
     <textarea 
       class="description" 
