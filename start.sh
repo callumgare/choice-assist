@@ -12,5 +12,6 @@ if [ "$NODE_ENV" = "production" ]; then
     ${APP_TYPES_DIR}/static/start.sh
   fi;
 else
+  rimraf dist
   npm run dev
 fi
