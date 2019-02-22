@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import AsyncComputed from 'vue-async-computed'
+import VueClipboard from 'vue-clipboard2'
 
 import deckData from '@/deckData.json'
 
@@ -12,6 +13,7 @@ const localStorageDraftKey = 'unsavedDeckData'
 Vue.config.productionTip = false
 
 Vue.use(AsyncComputed)
+Vue.use(VueClipboard)
 
 /* eslint-disable no-new */
 new Vue({

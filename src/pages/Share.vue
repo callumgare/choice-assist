@@ -24,10 +24,11 @@
       <modal-box v-if="showShareDetails" @close="showShareDetails = false">
         <h3 slot="header">Share Details</h3>
         <div slot="body"> 
-          <span>
-            To share simply copy and send the following link:
-          </span>
-          <input class="share-url" type="text" :value="shareUrl" autofocus>
+          <button type="button" @click="copyUrl">Copy Link</button>
+          <div class="instructions">
+            (or if the button doesn't work, select and copy the below text)
+          </div>
+          <input class="share-url" type="text" :value="shareUrl" @click="$event.target.select()" autofocus>
         </div>
       </modal-box>
     </main>
@@ -88,6 +89,15 @@ export default {
     },
     editChoices () {
       this.$router.push({name: 'Index'})
+    },
+    copyUrl () {
+      this.$copyText(this.shareUrl).then(function (e) {
+        alert('Copied')
+        console.log(e)
+      }, function (e) {
+        alert('Can not copy')
+        console.log(e)
+      })
     }
   }
 }
@@ -103,6 +113,10 @@ export default {
     display: block;
     width: 100%;
     margin: 0.5em 0;
+  }
+
+  .modal-box .instructions {
+    margin: 1em 0 0;
   }
   
   /* Custom CSS */

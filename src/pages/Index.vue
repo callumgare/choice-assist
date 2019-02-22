@@ -90,7 +90,7 @@ export default {
     groupsNeedingMoreSelections () {
       return this.choiceGroups
         .filter(group => group.minSelectable > 0)
-        .filter(group => this.subtreeSelected(group) < group.minSelectable)
+        .filter(group => this.subtreeSelected(group).length < group.minSelectable)
     },
     changeRequiredMsg () {
       const msgs = []
