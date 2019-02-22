@@ -29,7 +29,7 @@
           "description": "The burbs; Backyards, plenty of room to bike around, bit calmer than the city but less disconnected than anywhere more rural. Where the suburb anthem of lawn mowers and whipper snippers plays every Saturday morning.\n<br><br>\nYou can pick up to 3 of this one.",
           "img": "suburbs.jpg",
           "imgSource": "https://www.pexels.com/photo/apartment-architecture-buildings-cars-243722/",
-          "maxSelectable": "3",
+          "maxSelectable": 3,
           "cost": 3
         },
         {
@@ -59,7 +59,7 @@
           "title": "Job",
           "id": 13,
           "description": "Your main and presumably paid occupation.",
-          "maxSelectable": "2",
+          "maxSelectable": 2,
           "contains": [
             {
               "title": "Mechanic",
@@ -94,8 +94,8 @@
           "title": "Hobby",
           "id": 14,
           "description": "What do you do in your down time?",
-          "maxSelectable": "1",
-          "minSelectable": "1",
+          "maxSelectable": 1,
+          "minSelectable": 1,
           "contains": [
             {
               "title": "Photography",

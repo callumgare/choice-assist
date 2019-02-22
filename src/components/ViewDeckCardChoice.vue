@@ -4,7 +4,7 @@
     @click="clicked"
   >
     <div>
-      <img v-if="choiceData.img" :src="imageSRC">
+      <img v-if="choiceData.img" :src="imageSrc">
     </div>
     <div class="horizontal">
       <a v-if="choiceData.imgSource" class="imgSource" :href="choiceData.imgSource" @click.stop target="_blank">Image Source</a>
@@ -52,9 +52,6 @@
       }
     },
     computed: {
-      imageSRC () {
-        return this.getAssetUrl(this.choiceData.img)
-      },
       qty: {
         // getter
         get: function () {
