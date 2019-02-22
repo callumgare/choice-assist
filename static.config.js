@@ -1,4 +1,5 @@
 module.exports = {
   port: process.env.PORT,
-  directory: 'dist'
+  directory: 'dist',
+  spa: 'index.html'
 }

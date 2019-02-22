@@ -11,7 +11,8 @@
             "^config/",
             "^package\\.json$",
             "^\\.env$",
-            "^src/deckData.json"
+            "^src/deckData.json",
+            "^static.config.js"
         ]
     }
 }

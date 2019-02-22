@@ -25,7 +25,7 @@ export default {
           while (qtyDelta++ !== 0) this.unselectOne(choice)
         }
       } else {
-        this.$emit('selectionChanged', choice, qty)
+        this.$emit('selection-changed', choice, qty)
       }
     },
     unselectNeighboursIfNecessary (choice, qty) {
