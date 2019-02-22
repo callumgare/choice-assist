@@ -22,7 +22,8 @@
           v{{ groupData.version }}
         </span>
       </p>
-      <p 
+      <p
+        v-if="selectionRequirementsMsg" 
         :class="['selectionRequirements', {selectionRequirementsMet}]" 
         v-html="selectionRequirementsMsg"
       ></p>
